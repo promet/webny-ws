@@ -1,0 +1,6 @@
+name = WeebPal
+description = Install profile for WeebPal products
+version = VERSION
+core = 7.x
+
+files[] = weebpal.profile
