@@ -9,6 +9,7 @@ requirements
 Building
 ---
 * You need to edit your machine's local host file Add the entry 10.33.36.11 webny.dev
+* After cloning this repository, download this file to the top level of the project directory "webny-ws" : https://s3-us-west-2.amazonaws.com/webny/files.tar.gz
 * Run `vagrant up` to build the environment.
 * ssh in with `vagrant ssh`
 * Navigate to `/var/www/sites/webny.dev`.
