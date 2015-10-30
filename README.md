@@ -13,8 +13,8 @@ Building
 * Run `vagrant up` to build the environment.
 * ssh in with `vagrant ssh`
 * Make sure the web server and mysql server are running:
-** `sudo service mysql restart`
-** `sudo service apache2 restart`
+* * `sudo service mysql restart`
+* * `sudo service apache2 restart`
 * Navigate to `/var/www/sites/webny.dev`.
 * Execute this command to unpack the downloaded tarball:  `tar -xvzf files.tar.gz`
 * Go to the drupal root directory:  `cd /var/www/sites/webny.dev/www`
