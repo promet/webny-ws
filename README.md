@@ -13,8 +13,10 @@ Building
 * Run `vagrant up` to build the environment.
 * ssh in with `vagrant ssh`
 * Navigate to `/var/www/sites/webny.dev`.
-* cp `env.json` from `/var/drupal/default/` to next to the `settings.php` in the VM.
-* From inside your drupal root on the VM, run `../build/drush-build.sh local` and party.
+* Execute this command to unpack the downloaded tarball:  `tar -xvzf files.tar.gz`
+* Go to the drupal root directory:  `cd /var/www/sites/webny.dev/www`
+* Run the command `drush cc all`
+* Party!
 
 Use
 ---
@@ -40,7 +42,7 @@ Local
 -----
 This script is intended to create a local installation with a copy of the database and files. Use `mods_enable` in the environment directory to enable only modules needed for local development.
 
-If using default-d7 as template for slaughtering an existing site, be sure to replace the following lines of the local build script:
+If using this repository as template for slaughtering an existing site, be sure to replace the following lines of the local build script:
 
     echo "Installing database.";
     $drush si -y --account-pass='drupaladm1n'
