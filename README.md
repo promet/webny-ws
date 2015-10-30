@@ -8,10 +8,10 @@ requirements
 
 Building
 ---
-* You need to edit your machine's local host file Add the entry 10.33.36.11 webny.dev
-* After cloning this repository, download this file to the top level of the project directory "webny-ws" : https://s3-us-west-2.amazonaws.com/webny/files.tar.gz
+* You need to edit your machine's local host file to add the entry `10.33.36.11  webny.dev`
+* After cloning this repository, download this file to the top level of the project directory "webny-ws" : https://s3-us-west-2.amazonaws.com/webny/files.tar.gz .  This file contains the database, settings.php file and files directory for the demo site.
 * Run `vagrant up` to build the environment.
-* ssh in with `vagrant ssh`
+* ssh into the VM with `vagrant ssh`
 * Make sure the web server and mysql server are running:
 * * `sudo service mysql restart`
 * * `sudo service apache2 restart`
