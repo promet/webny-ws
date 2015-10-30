@@ -1,0 +1,19 @@
+# Ignore paths that contain user-generated content.
+*/sites/*/env.json
+*/sites/*/files
+*/sites/*/private
+
+# Ignore build files
+build/*/ref_db
+build/*/ref_db/*.sql*
+
+*/.DS_Store
+.DS_Store
+
+.htaccess
+
+# Ignore Vagrant box
+.vagrant/
+
+#Komodo project files
+*.komodoproject
