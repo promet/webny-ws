@@ -67,7 +67,7 @@ with these lines in order import the existing database snapshot:
     
 Additionally, while slaughtering a site, it can be useful to regenerate the mods_enabled list:
 
-    drush pm-list --pipe --status=enabled --type=module | sort > build/mods_enabled
+    drush pm-list --pipe --status=enabled --type=module | sort > ../build/mods_enabled
 
 Dev
 -----
