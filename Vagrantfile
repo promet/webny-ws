@@ -7,11 +7,15 @@ Vagrant.configure("2") do |config|
   project = 'webny'
   path = "/var/www/sites/#{project}.dev"
 
-  #comment out unless building a new vbox
+  #comment out to replace insecure keys with locally generated secure keys
   config.ssh.insert_key = false
 
   config.vm.synced_folder ".", "/vagrant", :disabled => true
-  config.vm.synced_folder ".", path, :nfs => true
+  ## For Macs, Linux, or OS that supports NFS fileshare
+  #config.vm.synced_folder ".", path, :nfs => true
+  ## For OS that does not support NFS fileshare
+  config.vm.synced_folder ".", path
+  
   config.vm.hostname = "#{project}.dev"
 
   config.ssh.forward_agent  = true
