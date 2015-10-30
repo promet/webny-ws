@@ -21,6 +21,12 @@ Building
 * Run the command `drush cc all`
 * Party!
 
+Items to Note
+-------------
+* The mysql root password on this VM is `pass`
+* The vagrant user has full sudo rights
+* The database name, database username and database password are:  default / default / default
+
 Use
 ---
 
@@ -33,6 +39,8 @@ one of the following:
 
 additional environments can be added by simply adding a directory for it with
 a build.sh in it.
+
+The build script is executed from the drupal root directory (/var/www/sites/webny.dev/www) as follows:  `../build/drush-build.sh local` (for a local vm build)
 
 Global
 ------
