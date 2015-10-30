@@ -1,6 +1,10 @@
 #! /usr/bin/env bash
-echo "Installing database.";
-$drush si -y --account-pass='drupaladm1n'
+echo "Dropping current database";
+$drush sql-drop -y
+echo "Re-installing webny.dev database";
+$drush sqlc < $env_path/ref_db/webnyDB.sql
+##echo "Installing database.";
+##$drush si -y --account-pass='drupaladm1n'
 echo "Enabling modules needed for local development.";
 $drush en $(cat $env_path/mods_enabled | tr '\n' ' ') -y -v
 echo "Clearing caches.";
