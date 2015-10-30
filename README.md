@@ -1,5 +1,5 @@
-default
-=======
+WebNY Holistic Testing Workshop
+===============================
 
 requirements
 ------------
