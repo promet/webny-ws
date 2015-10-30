@@ -8,10 +8,10 @@ requirements
 
 Building
 ---
-* You need to edit your machine's local host file Add the entry 10.33.36.11 webny.dev
-* After cloning this repository, download this file to the top level of the project directory "webny-ws" : https://s3-us-west-2.amazonaws.com/webny/files.tar.gz
+* You need to edit your machine's local host file to add the entry `10.33.36.11  webny.dev`
+* After cloning this repository, download this file to the top level of the project directory "webny-ws" : https://s3-us-west-2.amazonaws.com/webny/files.tar.gz .  This file contains the database, settings.php file and files directory for the demo site.
 * Run `vagrant up` to build the environment.
-* ssh in with `vagrant ssh`
+* ssh into the VM with `vagrant ssh`
 * Make sure the web server and mysql server are running:
 * * `sudo service mysql restart`
 * * `sudo service apache2 restart`
@@ -20,6 +20,12 @@ Building
 * Go to the drupal root directory:  `cd /var/www/sites/webny.dev/www`
 * Run the command `drush cc all`
 * Party!
+
+Items to Note
+-------------
+* The mysql root password on this VM is `pass`
+* The vagrant user has full sudo rights
+* The database name, database username and database password are:  default / default / default
 
 Use
 ---
@@ -33,6 +39,8 @@ one of the following:
 
 additional environments can be added by simply adding a directory for it with
 a build.sh in it.
+
+The build script is executed from the drupal root directory (/var/www/sites/webny.dev/www) as follows:  `../build/drush-build.sh local` (for a local vm build)
 
 Global
 ------
@@ -59,7 +67,7 @@ with these lines in order import the existing database snapshot:
     
 Additionally, while slaughtering a site, it can be useful to regenerate the mods_enabled list:
 
-    drush pm-list --pipe --status=enabled --type=module | sort > build/mods_enabled
+    drush pm-list --pipe --status=enabled --type=module | sort > ../build/mods_enabled
 
 Dev
 -----
