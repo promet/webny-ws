@@ -1,6 +1,5 @@
 Vagrant.configure("2") do |config|
-  #config.vm.box = "promet/wheezy_2015"
-  config.vm.box = "promet/jessie_2015"
+  config.vm.box = "promet/jessie_webny"
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", 3072]
   end
