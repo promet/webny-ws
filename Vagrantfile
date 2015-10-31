@@ -1,12 +1,12 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "promet/jessie_webny"
+  
+  host = RbConfig::CONFIG['host_os']
 
   project = 'webny'
   path = "/var/www/sites/#{project}.dev"
-
   config.vm.provider :virtualbox do |vb|
  
-    host = RbConfig::CONFIG['host_os']
     if defined? host 
    # Give VM 1/4 system memory & access to half the cpu cores on the host
       if host =~ /darwin/
@@ -35,13 +35,9 @@ Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
 
   config.vm.synced_folder ".", "/vagrant", :disabled => true
-  if host =~/darwin/
-    config.vm.synced_folder ".", path, :nfs => true
-  elseif host =~ /linux/
-    config.vm.synced_folder ".", path, :nfs => true
-  else # this is the setting for windows
-    config.vm.synced_folder ".", path
-  end
+
+  config.vm.synced_folder ".", path, :nfs => true
+  #config.vm.synced_folder ".", path #windows
 
   config.vm.hostname = "#{project}.dev"
   config.ssh.forward_agent  = true
