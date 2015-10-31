@@ -1,23 +1,45 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "promet/jessie_webny"
-  config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", 3072]
-  end
 
   project = 'webny'
   path = "/var/www/sites/#{project}.dev"
 
-  #comment out to replace insecure keys with locally generated secure keys
+  config.vm.provider :virtualbox do |vb|
+
+    host = RbConfig::CONFIG['host_os']
+
+    # Give VM 1/4 system memory & access to half the cpu cores on the host
+    if host =~ /darwin/
+      cpus = `sysctl -n hw.ncpu`.to_i / 2
+      # sysctl returns Bytes and we need to convert to MB
+      mem = `sysctl -n hw.memsize`.to_i / 1024 / 1024 / 4
+    elsif host =~ /linux/
+      cpus = `nproc`.to_i / 2
+      # meminfo shows KB and we need to convert to MB
+      mem = `grep 'MemTotal' /proc/meminfo | sed -e 's/MemTotal://' -e 's/ kB//'`.to_i / 1024 / 4
+    else # sorry Windows folks, I can't help you
+      cpus = 2
+      mem = 4096
+    end
+
+    vb.customize ["modifyvm", :id, "--memory", mem]
+    vb.customize ["modifyvm", :id, "--cpus", cpus]
+  end
+
+
+  #comment out unless building a new vbox
   config.ssh.insert_key = false
 
   config.vm.synced_folder ".", "/vagrant", :disabled => true
-  ## For Macs, Linux, or OS that supports NFS fileshare
-  #config.vm.synced_folder ".", path, :nfs => true
-  ## For OS that does not support NFS fileshare
-  config.vm.synced_folder ".", path
-  
-  config.vm.hostname = "#{project}.dev"
+  if host =~/darwin/
+    config.vm.synced_folder ".", path, :nfs => true
+  elseif host =~ /linux/
+    config.vm.synced_folder ".", path, :nfs => true
+  else # this is the setting for windows
+    config.vm.synced_folder ".", path
+  end
 
+  config.vm.hostname = "#{project}.dev"
   config.ssh.forward_agent  = true
   config.vm.network :private_network, ip: "10.33.36.11"
   
