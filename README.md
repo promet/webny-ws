@@ -1,5 +1,5 @@
-default
-=======
+WebNY Holistic Testing Workshop
+===============================
 
 requirements
 ------------
@@ -8,12 +8,24 @@ requirements
 
 Building
 ---
-* You need to edit your machine's local host file Add the entry 10.33.36.11 webny.dev
+* You need to edit your machine's local host file to add the entry `10.33.36.11  webny.dev`
+* After cloning this repository, download this file to the top level of the project directory "webny-ws" : https://s3-us-west-2.amazonaws.com/webny/files.tar.gz .  This file contains the database, settings.php file and files directory for the demo site.
 * Run `vagrant up` to build the environment.
-* ssh in with `vagrant ssh`
+* ssh into the VM with `vagrant ssh`
+* Make sure the web server and mysql server are running:
+* * `sudo service mysql restart`
+* * `sudo service apache2 restart`
 * Navigate to `/var/www/sites/webny.dev`.
-* cp `env.json` from `/var/drupal/default/` to next to the `settings.php` in the VM.
-* From inside your drupal root on the VM, run `../build/drush-build.sh local` and party.
+* Execute this command to unpack the downloaded tarball:  `tar -xvzf files.tar.gz`
+* Go to the drupal root directory:  `cd /var/www/sites/webny.dev/www`
+* Run the command `drush cc all`
+* Party!
+
+Items to Note
+-------------
+* The mysql root password on this VM is `pass`
+* The vagrant user has full sudo rights
+* The database name, database username and database password are:  default / default / default
 
 Use
 ---
@@ -28,6 +40,8 @@ one of the following:
 additional environments can be added by simply adding a directory for it with
 a build.sh in it.
 
+The build script is executed from the drupal root directory (/var/www/sites/webny.dev/www) as follows:  `../build/drush-build.sh local` (for a local vm build)
+
 Global
 ------
 For all environments, the build script will:
@@ -39,7 +53,7 @@ Local
 -----
 This script is intended to create a local installation with a copy of the database and files. Use `mods_enable` in the environment directory to enable only modules needed for local development.
 
-If using default-d7 as template for slaughtering an existing site, be sure to replace the following lines of the local build script:
+If using this repository as template for slaughtering an existing site, be sure to replace the following lines of the local build script:
 
     echo "Installing database.";
     $drush si -y --account-pass='drupaladm1n'
@@ -53,7 +67,7 @@ with these lines in order import the existing database snapshot:
     
 Additionally, while slaughtering a site, it can be useful to regenerate the mods_enabled list:
 
-    drush pm-list --pipe --status=enabled --type=module | sort > build/mods_enabled
+    drush pm-list --pipe --status=enabled --type=module | sort > ../build/mods_enabled
 
 Dev
 -----
