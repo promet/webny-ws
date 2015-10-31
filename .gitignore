@@ -10,6 +10,9 @@ build/*/ref_db/*.sql*
 */.DS_Store
 .DS_Store
 
+# Windows trash files
+._settings.php
+._files
 .htaccess
 
 # Ignore Vagrant box
