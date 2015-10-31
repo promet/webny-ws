@@ -5,19 +5,23 @@ Vagrant.configure("2") do |config|
   path = "/var/www/sites/#{project}.dev"
 
   config.vm.provider :virtualbox do |vb|
-
+ 
     host = RbConfig::CONFIG['host_os']
-
-    # Give VM 1/4 system memory & access to half the cpu cores on the host
-    if host =~ /darwin/
-      cpus = `sysctl -n hw.ncpu`.to_i / 2
-      # sysctl returns Bytes and we need to convert to MB
-      mem = `sysctl -n hw.memsize`.to_i / 1024 / 1024 / 4
-    elsif host =~ /linux/
-      cpus = `nproc`.to_i / 2
-      # meminfo shows KB and we need to convert to MB
-      mem = `grep 'MemTotal' /proc/meminfo | sed -e 's/MemTotal://' -e 's/ kB//'`.to_i / 1024 / 4
-    else # sorry Windows folks, I can't help you
+    if defined? host 
+   # Give VM 1/4 system memory & access to half the cpu cores on the host
+      if host =~ /darwin/
+        cpus = `sysctl -n hw.ncpu`.to_i / 2
+        # sysctl returns Bytes and we need to convert to MB
+        mem = `sysctl -n hw.memsize`.to_i / 1024 / 1024 / 4
+      elsif host =~ /linux/
+        cpus = `nproc`.to_i / 2
+        # meminfo shows KB and we need to convert to MB
+        mem = `grep 'MemTotal' /proc/meminfo | sed -e 's/MemTotal://' -e 's/ kB//'`.to_i / 1024 / 4
+      else # sorry Windows folks, I can't help you
+        cpus = 2
+        mem = 4096
+      end
+    else #sorry, Windows folks have to set this manually
       cpus = 2
       mem = 4096
     end
