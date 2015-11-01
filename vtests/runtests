@@ -1,0 +1,23 @@
+#!/bin/sh
+## Check to see if there are any failing screenshots in the test screenshot directory
+## If there are, delete them
+count=`ls -1 screenshots/homepage/*.fail.png 2>/dev/null | wc -l`
+if [ $count != 0 ]
+  then 
+    rm screenshots/homepage/*.fail.png
+fi 
+count=`ls -1 screenshots/homepage/failures/*.png 2>/dev/null | wc -l`
+if [ $count != 0 ]
+  then
+    rm screenshots/homepage/failures/*.png
+fi
+## Change to the drupal root, clear the cache and run cron
+cd ../www
+drush cc all
+drush cron
+## Change back tothe test directory and run the tests
+cd ../vtests
+node_modules/casperjs/bin/casperjs test test/homepage.js
+## After running the tests, clear the PhantomJS browser cache
+rm -Rf ~/.qws
+

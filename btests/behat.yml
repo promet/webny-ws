@@ -1,0 +1,43 @@
+default:
+  gherkin:
+    filters:
+      tags: "~@skip"
+  suites:
+    homepage:
+      paths: [%paths.base%/features/homepage]
+      contexts:
+        - FeatureContext
+        - DrupalFeatureContext        
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+    other:
+      paths: [%paths.base%/features/other]
+      contexts:
+        - FeatureContext
+        - DrupalFeatureContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Behat\MinkExtension\Context\RawMinkContext
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://webny.dev
+      files_path: '/var/www/sites/webny.dev/btests/files'
+      goutte: ~
+      selenium2:
+        wd_host: "http://localhost:8643/wd/hub" 
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal' 
+      drush:
+        alias: 'local'
+      drupal:
+        drupal_root: '/var/www/sites/webny.dev/www'
+      region_map:
+        header: "#header"
+        logo:  "#logo"
+      selectors:
+        message_selector: '.messages'
+        error_message_selector: '.messages.messages.error'
+        success_message_selector: '.messages.messages.status'
