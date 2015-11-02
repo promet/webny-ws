@@ -31,7 +31,7 @@
   position: absolute;
   left: 235px;
   top: 20px;
-  z-index: 200; 
+  z-index: 200;
 }
 
 #name-and-slogan a {
@@ -91,7 +91,7 @@
 #slideshow-wrapper .views-field-title {
   position: absolute;
   left: 240px;
-  top: 85px; 
+  top: 85px;
   z-index: 10;
 }
 
@@ -141,7 +141,7 @@
 
 #slideshow-wrapper .views-slideshow-controls-text-previous,
 #slideshow-wrapper .views-slideshow-controls-text-next {
-  display:block; 
+  display:block;
   float:left;
   margin-top: 27px;
 }
@@ -159,9 +159,9 @@
   background: url(../images/controls.png) 0 0 no-repeat;
 }
 
-#slideshow-wrapper .views-slideshow-controls-text-previous a {  
+#slideshow-wrapper .views-slideshow-controls-text-previous a {
   background-position: 0 0;
-} 
+}
 
 #slideshow-wrapper .views-slideshow-controls-text-previous a:hover,
 #slideshow-wrapper .views-slideshow-controls-text-previous a:focus {
@@ -214,7 +214,7 @@
 }
 
 #panel-third-wrapper .jcarousel-container-horizontal {
-  padding: 20px 0 0; 
+  padding: 20px 0 0;
   height: 100px;
   width: 100%;
 }
@@ -223,7 +223,7 @@
   width: 100%;
 }
 
-#panel-third-wrapper .jcarousel-next, 
+#panel-third-wrapper .jcarousel-next,
 #panel-third-wrapper .jcarousel-prev {
   background: url(../images/controls-2.png) -55px 0 no-repeat;
   width: 27px;
@@ -332,9 +332,9 @@
   text-align: left;
 }
 
-.video-of-week .jcarousel-next, 
+.video-of-week .jcarousel-next,
 .video-of-week .jcarousel-prev,
-.featured-professors .jcarousel-next, 
+.featured-professors .jcarousel-next,
 .featured-professors .jcarousel-prev {
   width: 18px;
   height: 18px;
@@ -410,7 +410,7 @@
 }
 
 /* node */
-.node, #block-system-main .view .views-row {  
+.node, #block-system-main .view .views-row {
   margin-top: 20px;
   border-top: 1px solid #ddd0c7;
   border-bottom: none;
@@ -479,7 +479,7 @@
 .comment ul.inline li { display: block; float:left; margin-right: 5px; margin-bottom: 5px; padding: 0; }
 
 .node .links li a,
-.comment .links li a { 
+.comment .links li a {
   display: inline-block;
   color: #fff;
   background: #32821f;
@@ -513,18 +513,18 @@
 #block-system-main .view .views-row .views-field-title a:focus { color: #d85000 }
 
 /* submitted */
-.submitted { 
-  margin-bottom: 10px; 
-  color: #666; 
+.submitted {
+  margin-bottom: 10px;
+  color: #666;
 }
 
 /* tabs */
 .tabs { margin-bottom: 30px; }
 
-ul.primary { 
+ul.primary {
   margin: 0;
   padding: 0;
-  overflow: hidden;  
+  overflow: hidden;
   border-bottom: 5px solid #DDD0C7;
 }
 
@@ -549,10 +549,10 @@ ul.primary li a:hover {
   background: #fff;
 }
 
-ul.primary li.active a { 
-  border-bottom: none; 
-  border-color: #DDD0C7; 
-  color: #D85000; 
+ul.primary li.active a {
+  border-bottom: none;
+  border-color: #DDD0C7;
+  color: #D85000;
 }
 
 /* breadcrumb */
@@ -563,9 +563,9 @@ ul.primary li.active a {
 .breadcrumb {
   border-radius: 0;
   background: none;
-  float: left; 
+  float: left;
   margin: 0;
-  padding: 0; 
+  padding: 0;
   color: #575353;
 }
 
@@ -680,7 +680,7 @@ ul.primary li.active a {
 
 .item-list .pager li:hover,
 .item-list .pager li:focus {
-  background: #32821F; 
+  background: #32821F;
 }
 
 .pager a:hover, .pager li > a:hover, .pager li > a:focus { background: none; }
@@ -748,7 +748,7 @@ ul.primary li.active a {
 
 #search-form #edit-basic .form-item input { float: left; margin: 0 5px 0 0; }
 
-#search-form .form-submit { 
+#search-form .form-submit {
   float: left;
   background: #32821F;
   color: #fff;
@@ -793,12 +793,12 @@ ul.primary li.active a {
 /* Library */
 #block-system-main .view .views-row .views-field-name {
   font-size: 1.33em;
-  color: #333;  
+  color: #333;
   margin-bottom: 10px;
 }
 
-#block-system-main .view .views-row .views-field-name a { 
-  color:#333; 
+#block-system-main .view .views-row .views-field-name a {
+  color:#333;
   font-weight: bold;
 }
 
@@ -842,8 +842,8 @@ table .container { padding: 10px !important; font-weight: bold; background:#ddd;
 .galleryformatter-greenarrows .gallery-thumbs .arrow {
   width: 18px;
   height: 18px;
-  background: url(../images/controls-3.png) 0 0 no-repeat;  
-  top: 53px; 
+  background: url(../images/controls-3.png) 0 0 no-repeat;
+  top: 53px;
 }
 
 .galleryformatter-greenarrows .gallery-thumbs .back { background-position: 0 0; left: 20px; }
@@ -870,3 +870,14 @@ table .container { padding: 10px !important; font-weight: bold; background:#ddd;
 
 #block-user-login .form-submit { background: #32821F; color:#fff; text-transform: uppercase; border: none; padding: 5px 10px;  text-transform: uppercase; }
 
+/*
+#views_slideshow_cycle_main_slideshow-block,
+.node-blog img {
+  visibility: hidden;
+}
+*/
+/**
+.node-blog p {
+  padding-left: 15px;
+}
+**/
