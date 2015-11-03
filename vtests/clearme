@@ -1,6 +1,0 @@
-#!/bin/sh
-cd ../www
-drush cc all
-drush cron
-cd ../vtests
-ls -l
