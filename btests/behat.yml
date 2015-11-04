@@ -10,7 +10,7 @@ default:
         - DrupalFeatureContext        
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
-        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\DrupalContext
     other:
       paths: [%paths.base%/features/other]
       contexts:
@@ -18,7 +18,7 @@ default:
         - DrupalFeatureContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
-        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\DrupalContext
         - Behat\MinkExtension\Context\RawMinkContext
   extensions:
     Behat\MinkExtension:
